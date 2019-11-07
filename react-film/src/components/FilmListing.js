@@ -12,16 +12,17 @@ class FilmListing extends Component {
   };
 
   render() {
+    let {films, faves} = this.props
     const allFilms = (this.state.filter === "all"
-      ? this.props.films
-      : this.props.faves
-    ).map(film => (
+      ? films
+      : faves
+    ).map(filmItem => (
       <FilmRow
-        key={film.id}
-        film={film}
-        isFave={this.props.faves.includes(film)}
-        onFaveToggle={() => this.props.onFaveToggle(film)}
-        handleDetailsClick={() => this.props.handleDetailsClick(film)}
+        key={filmItem.id}
+        film={filmItem}
+        isFave={faves.includes(filmItem)}
+        onFaveToggle={() => this.props.onFaveToggle(filmItem)}
+        handleDetailsClick={() => this.props.handleDetailsClick(filmItem)}
       />
     ));
 
